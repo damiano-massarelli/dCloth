@@ -9,6 +9,7 @@ class Sphere
     public:
         Vec3 center;
         float radius = 0;
+        float friction = 0.9f;
 
         Sphere(const Vec3& pcenter, float pradius);
 

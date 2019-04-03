@@ -48,21 +48,23 @@ void Cloth::update(Display& display)
         v.pos.y += mass;
     }
 
-    for (auto& st : sticks) {
-        Vertex& v1 = vertices[st.v1];
-        Vertex& v2 = vertices[st.v2];
-        float len = v1.pos.distanceTo(v2.pos);
-        Vec3 offset = v1.pos - v2.pos;
-        float percent = (len - st.len) / (st.len);
-        Vec3 setBack = (offset * percent) * stiffness;
-        if (percent < 0) continue;
+    for (int i = 0; i < precision; ++i) {
+        for (auto& st : sticks) {
+            Vertex& v1 = vertices[st.v1];
+            Vertex& v2 = vertices[st.v2];
+            float len = v1.pos.distanceTo(v2.pos);
+            Vec3 offset = v1.pos - v2.pos;
+            float percent = (len - st.len) / (st.len);
+            Vec3 setBack = (offset * percent) * stiffness;
+            if (percent < 0) continue;
 
-        if (!v1.fixed)
-            v1.pos = v1.pos - setBack;
+            if (!v1.fixed)
+                v1.pos = v1.pos - setBack;
 
-        if (!v2.fixed) {
-            v2.pos = v2.pos + setBack;
+            if (!v2.fixed) {
+                v2.pos = v2.pos + setBack;
 
+            }
         }
     }
     for (auto& v : vertices) {
@@ -73,6 +75,11 @@ void Cloth::update(Display& display)
             v.oldPos.y = v.pos.y + vel.y * 0.05f;
         }
     }
+}
+
+std::vector<Vertex>& Cloth::getVertices()
+{
+    return vertices;
 }
 
 Cloth::~Cloth()

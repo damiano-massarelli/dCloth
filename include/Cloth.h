@@ -20,26 +20,31 @@ struct Stick {
 
 class Cloth
 {
-    std::vector<Vertex> vertices;
-    std::vector<Stick> sticks;
-
-    friend class Sphere;
+    private:
+        std::vector<Vertex> vertices;
+        std::vector<Stick> sticks;
 
     public:
         /** how the cloth responds to stretching
           * a value of 1 means it is completely stiff, a value of 0 means that the
           * cloth can deform indefinitely. Too high values can lead to instability */
-        float stiffness = 0.09f;
+        float stiffness = 0.03f;
 
         /** The mass of each particle composing the cloth. Too high values can lead
           * to instability */
-        float mass = 0.1f;
+        float mass = 0.3f;
+
+        /** How accurate the simulation is. Higher values reduce instability but
+          * undermine performances */
+        int precision = 25;
 
         Cloth(const Vec3& center, int width, int depth, float space, std::function<bool(int, int)> fixedIf = nullptr);
 
         void render(Display& display);
 
         void update(Display& display);
+
+        std::vector<Vertex>& getVertices();
 
         virtual ~Cloth();
 };

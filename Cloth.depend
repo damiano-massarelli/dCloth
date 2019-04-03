@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1553784711 source:c:\users\damia\documents\cpp\cloth\src\vec3.cpp
+	"Vec3.h"
+	<cmath>
+
+1553784548 c:\users\damia\documents\cpp\cloth\include\vec3.h
+	<ostream>
+
+1553796981 source:c:\users\damia\documents\cpp\cloth\src\display.cpp
+	"Display.h"
+	<SDL_image.h>
+
+1553795920 c:\users\damia\documents\cpp\cloth\include\display.h
+	<SDL.h>
+	<string>
+	"Camera.h"
+
+1554302697 source:c:\users\damia\documents\cpp\cloth\src\cloth.cpp
+	"Cloth.h"
+	<SDL2_gfxPrimitives.h>
+
+1554305335 c:\users\damia\documents\cpp\cloth\include\cloth.h
+	"Vec3.h"
+	<SDL.h>
+	<vector>
+	<functional>
+	"Display.h"
+
+1554305386 source:c:\users\damia\documents\cpp\cloth\main.cpp
+	<iostream>
+	<SDL.h>
+	"Display.h"
+	"Cloth.h"
+	"Sphere.h"
+	"Cuboid.h"
+
+1554305366 c:\users\damia\documents\cpp\cloth\include\sphere.h
+	"Vec3.h"
+	"Cloth.h"
+	"Display.h"
+
+1554305362 source:c:\users\damia\documents\cpp\cloth\src\sphere.cpp
+	"Sphere.h"
+	<SDL2_gfxPrimitives.h>
+
+1553795970 c:\users\damia\documents\cpp\cloth\include\camera.h
+	<SDL.h>
+	"Vec3.h"
+
+1553796638 source:c:\users\damia\documents\cpp\cloth\src\camera.cpp
+	"Camera.h"
+
+1554289918 c:\users\damia\documents\cpp\cloth\include\cuboid.h
+	"Vec3.h"
+	"Cloth.h"
+	"Display.h"
+
+1554305243 source:c:\users\damia\documents\cpp\cloth\src\cuboid.cpp
+	"Cuboid.h"
+	<cmath>
+
