@@ -5,19 +5,16 @@ Sphere::Sphere(const Vec3& pcenter, float pradius) : center{pcenter}, radius{pra
 {
 
 }
-
-void Sphere::handleCollision(Cloth& cloth) const
+void Sphere::handleVertex(Vertex& v)
 {
-    for (auto& v : cloth.getVertices()) {
-        if (v.pos.distanceTo(center) < radius) {
-            Vec3 vel = v.pos - v.oldPos;
-            Vec3 newPos = v.pos - center;
-            newPos.normalize();
+    if (v.pos.distanceTo(center) < radius) {
+        Vec3 vel = v.pos - v.oldPos;
+        Vec3 newPos = v.pos - center;
+        newPos.normalize();
 
-            newPos = center + newPos * radius;
-            v.pos = newPos;
-            v.oldPos = v.pos - vel * friction;
-        }
+        newPos = center + newPos * radius;
+        v.pos = newPos;
+        v.oldPos = v.pos - vel * smoothness;
     }
 }
 

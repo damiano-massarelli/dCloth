@@ -3,8 +3,9 @@
 #include "Vec3.h"
 #include "Cloth.h"
 #include "Display.h"
+#include "ICollider.h"
 
-class Cuboid
+class Cuboid : public ICollider
 {
     public:
         Vec3 center;
@@ -14,7 +15,7 @@ class Cuboid
 
         Cuboid(const Vec3& pcenter, float w = 10, float h = 10, float d = 10);
 
-        void handleCollision(Cloth& cloth) const;
+        virtual void handleVertex(Vertex& v) override;
 
         void render(Display& display);
 };

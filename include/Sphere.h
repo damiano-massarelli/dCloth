@@ -3,17 +3,18 @@
 #include "Vec3.h"
 #include "Cloth.h"
 #include "Display.h"
+#include "ICollider.h"
 
-class Sphere
+class Sphere : public ICollider
 {
     public:
         Vec3 center;
         float radius = 0;
-        float friction = 0.9f;
+        float smoothness = 0.98f;
 
         Sphere(const Vec3& pcenter, float pradius);
 
-        void handleCollision(Cloth& cloth) const;
+        virtual void handleVertex(Vertex& v) override;
 
         void render(Display& display);
 };

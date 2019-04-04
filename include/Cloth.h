@@ -5,6 +5,7 @@
 #include <vector>
 #include <functional>
 #include "Display.h"
+#include "ICollider.h"
 
 struct Vertex {
     Vec3 pos;
@@ -23,12 +24,13 @@ class Cloth
     private:
         std::vector<Vertex> vertices;
         std::vector<Stick> sticks;
+        std::vector<ICollider*> colliders;
 
     public:
         /** how the cloth responds to stretching
           * a value of 1 means it is completely stiff, a value of 0 means that the
           * cloth can deform indefinitely. Too high values can lead to instability */
-        float stiffness = 0.03f;
+        float stiffness = 0.1f;
 
         /** The mass of each particle composing the cloth. Too high values can lead
           * to instability */
@@ -43,6 +45,8 @@ class Cloth
         void render(Display& display);
 
         void update(Display& display);
+
+        void addCollider(ICollider* collider);
 
         std::vector<Vertex>& getVertices();
 

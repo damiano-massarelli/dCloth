@@ -66,6 +66,11 @@ void Cloth::update(Display& display)
 
             }
         }
+        for (auto collider : colliders) {
+            for (auto& v : vertices) {
+                collider->handleVertex(v);
+            }
+        }
     }
     for (auto& v : vertices) {
         Vec3 vel = v.pos - v.oldPos;
@@ -75,6 +80,11 @@ void Cloth::update(Display& display)
             v.oldPos.y = v.pos.y + vel.y * 0.05f;
         }
     }
+}
+
+void Cloth::addCollider(ICollider* collider)
+{
+    colliders.push_back(collider);
 }
 
 std::vector<Vertex>& Cloth::getVertices()
